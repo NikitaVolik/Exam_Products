@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "./api.js";
 import { statusLabel } from "./statuses.js";
+import KitCard from "./KitCard.jsx";
 
 export default function Dashboard({ user }) {
   const [items, setItems] = useState([])
@@ -35,14 +36,14 @@ export default function Dashboard({ user }) {
       )}
       <div className="grid cols-2">
         {items.map(item => (
-          <article key={item.id} className="card stack">
+          <KitCard key={item.id} item={item}>
             <h3>{item.title}</h3>
             <p>Количество наборов: {item.quantity}</p>
             <p>Дата самовывоза: {item.pickup_date}</p>
             <p>Цена за набор: {Number(item.unit_price).toLocaleString('ru-RU') + ' ₽'}</p>
             <p>Итог: {Number(item.total_price).toLocaleString('ru-RU') + ' ₽'}</p>
             <p>Статус: {statusLabel(item.status)}</p>
-          </article>
+          </KitCard>
         ))}
       </div>
     </>

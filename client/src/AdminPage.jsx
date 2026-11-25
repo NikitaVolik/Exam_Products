@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "./api.js";
 import { statuses, statusLabel } from "./statuses.js";
+import KitCard from "./KitCard.jsx";
 
 export default function AdminPage() {
   const [items, setItems] = useState([])
@@ -105,7 +106,7 @@ export default function AdminPage() {
 
       <div className="grid cols-2">
         {visible.map(item => (
-          <article className="card stack" key={item.id}>
+          <KitCard key={item.id} item={item}>
             <h2>Заказ № {item.id}</h2>
             <h3>{item.title}</h3>
             <p>{item.login}</p>
@@ -128,7 +129,7 @@ export default function AdminPage() {
                 ))}
               </select>
             </label>
-          </article>
+          </KitCard>
         ))}
       </div>
 

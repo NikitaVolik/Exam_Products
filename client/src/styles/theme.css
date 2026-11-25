@@ -43,3 +43,10 @@ small { font-size: var(--fs-small); color: #396C27; }
 .order-summary p {
   margin: 0;
 }
+.card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
